@@ -28,16 +28,10 @@ namespace _02.AverageStudentGrades
                 studentsRecord[name].Add(grade);
             }
 
-            foreach ((string student, List<double> grade) in studentsRecord)
+            foreach ((string student, List<decimal> grades) in studentsRecord)
             {
-                string grades = string.Empty;
-                foreach (double g in grade)
-                {
-                    grades += $"{g:f2} ";
-                }
-
-                Console.WriteLine($"{student} -> {grades}(avg: {grade.Average():f2})");
-            } 
+                Console.WriteLine($"{student} -> {string.Join(" ", grades.Select(grade => grade.ToString("f2")))} (avg: {grades.Average():f2})");
+            }
         }
     }
 }
